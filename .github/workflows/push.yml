@@ -46,6 +46,12 @@ jobs:
         uses: actions/setup-go@v1
         with:
           go-version: 1.14.x
+      - name: Install packr
+        run: go get -u github.com/gobuffalo/packr/packr
+      - name: Install Node
+        uses: actions/setup-node@v1
+      - name: Install depdencies
+        run: yarn
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@v1
         with:
