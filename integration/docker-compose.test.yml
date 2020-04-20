@@ -7,7 +7,8 @@ services:
     environment:
       - DOZZLE_FILTER=name=dozzle
     build:
-      context: ..    
+      context: ..   
+      dockerfile: Dockerfile.self-contained
   integration:
     build:
       context: .
