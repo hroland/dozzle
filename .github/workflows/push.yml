@@ -43,7 +43,7 @@ jobs:
         with:
           go-version: 1.14.x
       - name: Install packr
-        run: go install github.com/gobuffalo/packr/packr
+        run: go get -u github.com/gobuffalo/packr/packr
       - name: Install Node
         uses: actions/setup-node@v1
       - name: Checkout
