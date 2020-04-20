@@ -1,0 +1,72 @@
+before:
+  hooks:
+    - yarn build
+    - packr -z
+builds:
+  - binary: dozzle
+    env:
+      - CGO_ENABLED=0
+    goos:
+      - linux
+    goarch:
+      - amd64
+      - 386
+      - arm
+      - arm64
+archives:
+  - replacements:
+      arm: armhf
+      arm64: arm64v8
+      amd64: amd64
+      386: 386
+      darwin: macOS
+      linux: linux
+    files:
+      - LICENSE
+checksum:
+  name_template: "checksums.txt"
+snapshot:
+  name_template: "{{ .Tag }}-next"
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - "^docs:"
+      - "^test:"
+dockers:
+  - goos: linux
+    goarch: amd64
+    goarm: ""
+    dockerfile: Dockerfile
+    binaries:
+      - dozzle
+    image_templates:
+      - amir20/dozzle:amd64-{{ .Version }}
+      - amir20/dozzle:amd64-latest
+  - goos: linux
+    goarch: 386
+    goarm: ""
+    dockerfile: Dockerfile
+    binaries:
+      - dozzle
+    image_templates:
+      - amir20/dozzle:i386-{{ .Version }}
+      - amir20/dozzle:i386-latest
+  - goos: linux
+    goarch: arm
+    goarm: 6
+    dockerfile: Dockerfile
+    binaries:
+      - dozzle
+    image_templates:
+      - amir20/dozzle:armhf-{{ .Version }}
+      - amir20/dozzle:armhf-latest
+  - goos: linux
+    goarch: arm64
+    goarm: ""
+    dockerfile: Dockerfile
+    binaries:
+      - dozzle
+    image_templates:
+      - amir20/dozzle:arm64v8-{{ .Version }}
+      - amir20/dozzle:arm64v8-latest
