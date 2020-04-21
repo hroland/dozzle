@@ -35,8 +35,7 @@ jobs:
         run: docker-compose -f integration/docker-compose.test.yml build
       - name: Run tests
         run: docker-compose -f integration/docker-compose.test.yml run integration
-  goreleaser:
-    needs: [go-test, npm-test, int-test]
+  goreleaser:    
     name: Release
     runs-on: ubuntu-latest
     steps:
