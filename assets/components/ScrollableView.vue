@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <section :class="{ 'is-full-height-scrollable': scrollable }">
     <header v-if="$slots.header">
       <slot name="header"></slot>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import Icon from "./Icon";
+import Icon from "./Icon.vue";
 
 export default {
   props: {

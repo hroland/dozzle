@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div>
     <section class="section">
       <div class="has-underline">
@@ -79,7 +79,7 @@
 import gt from "semver/functions/gt";
 import valid from "semver/functions/valid";
 import { mapActions, mapState } from "vuex";
-import Icon from "../components/Icon";
+import Icon from "../components/Icon.vue";
 import config from "../store/config";
 
 export default {

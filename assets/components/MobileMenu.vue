@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <aside>
     <a
       role="button"

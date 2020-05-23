@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <main>
     <mobile-menu v-if="isMobile"></mobile-menu>
 
@@ -41,13 +41,13 @@
 import { mapActions, mapGetters, mapState } from "vuex";
 import { Splitpanes, Pane } from "splitpanes";
 
-import LogViewerWithSource from "./components/LogViewerWithSource";
-import ScrollableView from "./components/ScrollableView";
-import SideMenu from "./components/SideMenu";
-import MobileMenu from "./components/MobileMenu";
-import Search from "./components/Search";
-import ContainerTitle from "./components/ContainerTitle";
-import Icon from "./components/Icon";
+import LogViewerWithSource from "./components/LogViewerWithSource.vue";
+import ScrollableView from "./components/ScrollableView.vue";
+import SideMenu from "./components/SideMenu.vue";
+import MobileMenu from "./components/MobileMenu.vue";
+import Search from "./components/Search.vue";
+import ContainerTitle from "./components/ContainerTitle.vue";
+import Icon from "./components/Icon.vue";
 
 export default {
   name: "App",

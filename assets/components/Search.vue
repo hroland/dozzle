@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div class="search columns is-gapless is-vcentered" v-show="showSearch" v-if="settings.search">
     <div class="column">
       <p class="control has-icons-left">
@@ -24,7 +24,7 @@
 <script>
 import { mapActions, mapState } from "vuex";
 import hotkeys from "hotkeys-js";
-import Icon from "./Icon";
+import Icon from "./Icon.vue";
 
 export default {
   props: [],

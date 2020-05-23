@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <aside>
     <div class="columns is-marginless">
       <div class="column">
@@ -43,7 +43,7 @@
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
 
-import Icon from "./Icon";
+import Icon from "./Icon.vue";
 
 export default {
   props: [],

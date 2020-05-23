@@ -1,12 +1,12 @@
-<template lang="html">
+<template>
   <log-event-source :id="id" v-slot="eventSource">
     <log-viewer :messages="eventSource.messages"></log-viewer>
   </log-event-source>
 </template>
 
 <script>
-import LogEventSource from "./LogEventSource";
-import LogViewer from "./LogViewer";
+import LogEventSource from "./LogEventSource.vue";
+import LogViewer from "./LogViewer.vue";
 
 export default {
   props: ["id"],

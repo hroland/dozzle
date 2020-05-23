@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <scrollable-view :scrollable="activeContainers.length > 0">
     <template v-slot:header v-if="activeContainers.length > 0">
       <container-title :value="allContainersById[id].name"></container-title>
@@ -10,9 +10,9 @@
 <script>
 import { mapActions, mapGetters, mapState } from "vuex";
 
-import LogViewerWithSource from "../components/LogViewerWithSource";
-import ScrollableView from "../components/ScrollableView";
-import ContainerTitle from "../components/ContainerTitle";
+import LogViewerWithSource from "../components/LogViewerWithSource.vue";
+import ScrollableView from "../components/ScrollableView.vue";
+import ContainerTitle from "../components/ContainerTitle.vue";
 
 export default {
   props: ["id", "name"],

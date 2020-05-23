@@ -1,4 +1,4 @@
-<template lang="html">
+<template>
   <div>
     <infinite-loader :onLoadMore="loadOlderLogs" :enabled="messages.length > 100"></infinite-loader>
     <slot :messages="messages"></slot>
@@ -7,7 +7,7 @@
 
 <script>
 import debounce from "lodash.debounce";
-import InfiniteLoader from "./InfiniteLoader";
+import InfiniteLoader from "./InfiniteLoader.vue";
 import config from "../store/config";
 
 export default {
