@@ -1,12 +1,23 @@
 <template>
   <scrollable-view :scrollable="scrollable" v-if="container">
     <template v-slot:header v-if="showTitle">
-      <div class="columns is-vcentered mr-0">
-        <div class="column is-narrow">
-          <container-title :value="container.name" @close="$emit('close')"></container-title>
+      <div class="columns is-vcentered px-4 py-4">
+        <div class="column has-text-weight-bold is-family-monospace">
+          {{ container.name }}
         </div>
-        <div class="column is-clipped">
-          <container-stat :stat="container.stat" :state="container.state"></container-stat>
+        <div class="column is-narrow has-text-weight-bold">
+          {{ container.state }}
+        </div>
+        <div class="column is-narrow" v-if="container.stat.memoryUsage !== null">
+          <span class="has-text-weight-light">mem</span>
+          <span class="has-text-weight-bold">
+            {{ formatBytes(container.stat.memoryUsage) }}
+          </span>
+        </div>
+
+        <div class="column is-narrow" v-if="container.stat.cpu !== null">
+          <span class="has-text-weight-light">load</span>
+          <span class="has-text-weight-bold"> {{ container.stat.cpu }}% </span>
         </div>
         <div class="column is-narrow" v-if="closable">
           <button class="delete is-medium" @click="$emit('close')"></button>
@@ -56,6 +67,16 @@ export default {
     ...mapGetters(["allContainersById"]),
     container() {
       return this.allContainersById[this.id];
+    },
+  },
+  methods: {
+    formatBytes(bytes, decimals = 2) {
+      if (bytes === 0) return "0 Bytes";
+      const k = 1024;
+      const dm = decimals < 0 ? 0 : decimals;
+      const sizes = ["Bytes", "KB", "MB", "GB", "TB", "PB", "EB", "ZB", "YB"];
+      const i = Math.floor(Math.log(bytes) / Math.log(k));
+      return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + " " + sizes[i];
     },
   },
 };
