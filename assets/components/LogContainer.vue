@@ -2,7 +2,7 @@
   <scrollable-view :scrollable="scrollable" v-if="container">
     <template v-slot:header v-if="showTitle">
       <div class="columns is-vcentered px-4 py-4">
-        <div class="column has-text-weight-bold is-family-monospace">
+        <div class="column has-text-weight-bold is-family-monospace is-ellipsis">
           {{ container.name }}
         </div>
         <div class="column is-narrow has-text-weight-bold">
