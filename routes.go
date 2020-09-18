@@ -114,10 +114,8 @@ Loop:
 		select {
 		case message, ok := <-messages:
 			if !ok {
-				fmt.Fprintf(w, "event: container-stopped\ndata: end of stream\n\n")
-				if err := sendContainersJSON(h.client, w); err != nil {
-					log.Errorf("Error while encoding containers to stream: %v", err)
-				}
+				sendContainersJSON(h.client, w)
+				fmt.Fprintf(w, "event: container-stopped\ndata: end of stream1\n\n")
 				break Loop
 			}
 			fmt.Fprintf(w, "data: %s\n", message)
@@ -132,10 +130,8 @@ Loop:
 		case e := <-err:
 			if e == io.EOF {
 				log.Debugf("Container stopped: %v", container.ID)
-				fmt.Fprintf(w, "event: container-stopped\ndata: end of stream\n\n")
-				if err := sendContainersJSON(h.client, w); err != nil {
-					log.Errorf("Error while encoding containers to stream: %v", err)
-				}
+				sendContainersJSON(h.client, w)
+				fmt.Fprintf(w, "event: container-stopped\ndata: end of stream2\n\n")
 				f.Flush()
 			} else {
 				log.Debugf("Error while reading from log stream: %v", e)
